@@ -1,0 +1,65 @@
+from pptx import Presentation
+
+# Taqdimotni yaratish
+prs = Presentation()
+
+# Sarlavha slaydi
+slide = prs.slides.add_slide(prs.slide_layouts[0])
+title = slide.shapes.title
+subtitle = slide.placeholders[1]
+title.text = "Nutq tovushlarining tasnifi va tavsifi"
+subtitle.text = "Miraziz Mirtojiyevning \"O'zbek tili fonetikasi\" kitobi asosida"
+
+# Asosiy mavzular uchun 18 ta slayd qo'shish
+mavzular = [
+    "Nutq tovushlari haqida umumiy tushuncha",
+    "Tovushlarning hosil bo'lish jarayoni",
+    "O‘pkadan chiqadigan havo oqimi va ovoz bog‘lamlari",
+    "Unli va undosh tovushlar",
+    "Unlilarning tasnifi",
+    "Unlilarning kenglik va torlik jihatidan tasnifi",
+    "Unlilarning lablanishiga ko‘ra tasnifi",
+    "Undosh tovushlarning tasnifi",
+    "Undoshlarning hosil bo‘lish joylari",
+    "Undoshlarning hosil bo‘lish usullari",
+    "Jarangsiz va jarangli tovushlar",
+    "Portlovchi va cho‘ziluvchi tovushlar",
+    "Tovushlarning akustik xususiyatlari",
+    "Nutq tovushlari fonetik jihatdan tavsifi",
+    "Tovushlarning til fonetik sistemasidagi o‘rni",
+    "Tovushlarning yozuvdagi aks etishi",
+    "Nutq tovushlarining fonologik tavsifi",
+    "Nutqning tovush tizimiga oid misollar"
+]
+
+for mavzu in mavzular:
+    slide = prs.slides.add_slide(prs.slide_layouts[1])
+    title = slide.shapes.title
+    content = slide.placeholders[1]
+    title.text = mavzu
+    content.text = f"{mavzu} haqida batafsil ma'lumot kiriting."
+
+# Xulosa slaydi
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title = slide.shapes.title
+content = slide.placeholders[1]
+title.text = "Xulosa"
+content.text = (
+    "Nutq tovushlarining tasnifi va tavsifi tilshunoslikda muhim o‘ringa ega. "
+    "O‘rganilgan bilimlar nutqni chuqurroq anglash va yozma nutqni tahlil qilishda yordam beradi."
+)
+
+# Foydalanilgan adabiyotlar slaydi
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title = slide.shapes.title
+content = slide.placeholders[1]
+title.text = "Foydalanilgan adabiyotlar"
+content.text = (
+    "1. Miraziz Mirtojiyev. \"O'zbek tili fonetikasi\".\n"
+    "2. O'zbek tilshunosligiga oid boshqa manbalar.\n"
+    "3. Internet materiallari (ziyo.uz)."
+)
+
+# Taqdimotni saqlash
+prs.save("Nutq_tovushlarining_tasnifi_va_tavsifi.pptx")
+print("Taqdimot muvaffaqiyatli yaratildi!")
